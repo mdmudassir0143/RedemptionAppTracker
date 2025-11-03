@@ -81,6 +81,36 @@ function flattenTransactions(
   return result
 }
 
+const transactionTypeMap: Record<string, string> = {
+  pay: "Payment",
+  axfer: "Asset Transfer",
+  acfg: "Asset Config",
+  afrz: "Asset Freeze",
+  appl: "Application Call",
+  keyreg: "Key Registration",
+}
+
+function countTransactionsByType(transactions: TransactionData[]): Record<string, number> {
+  const counts: Record<string, number> = {}
+
+  function processTransaction(tx: TransactionData) {
+    const txType = tx["tx-type"]
+    counts[txType] = (counts[txType] || 0) + 1
+
+    // Process inner transactions recursively
+    if (tx["inner-txns"] && tx["inner-txns"].length > 0) {
+      tx["inner-txns"].forEach(processTransaction)
+    }
+  }
+
+  transactions.forEach(processTransaction)
+  return counts
+}
+
+function getTransactionTypeName(txType: string): string {
+  return transactionTypeMap[txType] || txType
+}
+
 export function SwagTracker({ showSummary = false, onTotalsChange }: SwagTrackerProps) {
   const [swagData, setSwagData] = useState<Record<string, SwagData>>({})
 
@@ -141,6 +171,22 @@ export function SwagTracker({ showSummary = false, onTotalsChange }: SwagTracker
   const totalInnerTransactions = Object.values(swagData).reduce((sum, data) => sum + (data?.innerTxCount || 0), 0)
   const isAnyLoading = Object.values(swagData).some((data) => data?.loading)
 
+  const combinedTypeCounts = Object.values(swagData).reduce(
+    (acc, data) => {
+      if (data?.transactions) {
+        const typeCounts = countTransactionsByType(data.transactions)
+        Object.entries(typeCounts).forEach(([type, count]) => {
+          acc[type] = (acc[type] || 0) + count
+        })
+      }
+      return acc
+    },
+    {} as Record<string, number>,
+  )
+
+  // Sort by count descending
+  const sortedTypeCounts = Object.entries(combinedTypeCounts).sort(([, a], [, b]) => b - a)
+
   useEffect(() => {
     if (!isAnyLoading && onTotalsChange) {
       const combinedTotal = totalTransactions + totalInnerTransactions
@@ -163,7 +209,7 @@ export function SwagTracker({ showSummary = false, onTotalsChange }: SwagTracker
       {showSummary && (
         <div className="max-w-3xl mx-auto">
           <div className="relative overflow-hidden rounded-2xl border-2 border-[#4E62FF]/30 bg-background p-7 shadow-xl">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-5">
                 <div className="p-4 bg-[#4E62FF] rounded-2xl shadow-lg">
                   <Package className="h-7 w-7 text-white" />
@@ -173,9 +219,7 @@ export function SwagTracker({ showSummary = false, onTotalsChange }: SwagTracker
                     <span className="inline-block w-2 h-2 bg-[#4E62FF] rounded-full animate-pulse" />
                     Service Transactions
                   </p>
-                  <p className="text-sm text-muted-foreground font-medium">
-                    {totalTransactions} top-level + {totalInnerTransactions} inner
-                  </p>
+                  <p className="text-sm text-muted-foreground font-medium">Combined across all services</p>
                 </div>
               </div>
               {isAnyLoading ? (
@@ -186,6 +230,29 @@ export function SwagTracker({ showSummary = false, onTotalsChange }: SwagTracker
                 </div>
               )}
             </div>
+
+            {!isAnyLoading && sortedTypeCounts.length > 0 && (
+              <div className="mt-6 pt-6 border-t border-border/50">
+                <h3 className="text-sm font-bold text-foreground mb-4 uppercase tracking-wide">Transactions by Type</h3>
+                <div className="space-y-0 overflow-hidden rounded-lg border border-border/50">
+                  <div className="grid grid-cols-2 bg-muted/50 px-4 py-3 text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                    <div>Transaction Type</div>
+                    <div className="text-right">Count</div>
+                  </div>
+                  {sortedTypeCounts.map(([type, count], index) => (
+                    <div
+                      key={type}
+                      className={`grid grid-cols-2 px-4 py-3 text-sm ${
+                        index % 2 === 0 ? "bg-background" : "bg-muted/30"
+                      } hover:bg-[#4E62FF]/5 transition-colors`}
+                    >
+                      <div className="font-medium text-foreground">{transactionTypeMap[type] || type}</div>
+                      <div className="text-right font-bold text-[#4E62FF]">{count.toLocaleString()}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -274,6 +341,7 @@ export function SwagTracker({ showSummary = false, onTotalsChange }: SwagTracker
                         {allTransactions.slice(0, 15).map((tx, index) => {
                           const displayId = tx.isInner ? tx.parentId : tx.id
                           const linkId = tx.parentId || tx.id
+                          const txTypeName = getTransactionTypeName(tx["tx-type"])
 
                           return (
                             <a
@@ -294,8 +362,8 @@ export function SwagTracker({ showSummary = false, onTotalsChange }: SwagTracker
                                       : "bg-[#4E62FF]/15 text-[#4E62FF] dark:text-[#6B7FFF] border-[#4E62FF]/40"
                                   }`}
                                 >
-                                  {tx.isInner ? "inner-" : ""}
-                                  {tx["tx-type"]}
+                                  {tx.isInner ? "Inner " : ""}
+                                  {txTypeName}
                                 </Badge>
                                 <span className="font-mono text-xs text-foreground truncate font-medium">
                                   {displayId ? `${displayId.slice(0, 6)}...${displayId.slice(-6)}` : "N/A"}

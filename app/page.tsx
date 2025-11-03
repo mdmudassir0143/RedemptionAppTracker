@@ -51,7 +51,7 @@ export default function Home() {
                     Total Transactions
                   </p>
                   <p className="text-sm text-muted-foreground/80 font-medium">
-                    Swag Items ({swagTotal}) + Volunteer Payments ({volunteerTotal})
+                    Service Requests ({swagTotal}) + Volunteer Payments ({volunteerTotal})
                   </p>
                 </div>
               </div>
