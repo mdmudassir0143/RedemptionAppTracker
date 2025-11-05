@@ -28,7 +28,7 @@ export default function Home() {
               <div className="h-1 w-16 bg-gradient-to-r from-transparent via-[#4E62FF] to-transparent rounded-full" />
             </div>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Tracking Services and Volunteer transactions at Algorand India Summit.
+              Tracking Services and Volunteer Activity at Algorand India Summit.
             </p>
           </div>
         </div>
