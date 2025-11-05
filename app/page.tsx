@@ -2,16 +2,18 @@
 
 import { SwagTracker } from "@/components/swag-tracker"
 import { VolunteerTracker } from "@/components/volunteer-tracker"
+import { TshirtPrintingTracker } from "@/components/tshirt-printing-tracker"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { TrendingUp, Package, Users } from "lucide-react"
+import { TrendingUp, Package, Users, Shirt } from "lucide-react"
 import { useState } from "react"
 
 export default function Home() {
   const [swagTotal, setSwagTotal] = useState(0)
   const [volunteerTotal, setVolunteerTotal] = useState(0)
+  const [tshirtTotal, setTshirtTotal] = useState(0)
 
-  const grandTotal = swagTotal + volunteerTotal
+  const grandTotal = swagTotal + volunteerTotal + tshirtTotal
 
   return (
     <main className="min-h-screen bg-background">
@@ -51,7 +53,7 @@ export default function Home() {
                     Total Transactions
                   </p>
                   <p className="text-sm text-muted-foreground/80 font-medium">
-                    Service Requests ({swagTotal}) + Volunteer Payments ({volunteerTotal})
+                  Service Requests ({swagTotal}) + Volunteer Payments ({volunteerTotal}) + Tshirt Printing ({tshirtTotal})
                   </p>
                 </div>
               </div>
@@ -63,20 +65,27 @@ export default function Home() {
         </div>
 
         <Tabs defaultValue="swag" className="w-full">
-          <TabsList className="grid w-full max-w-lg mx-auto grid-cols-2 mb-10 h-14 bg-muted/50 p-1.5 rounded-2xl border border-border/40 shadow-lg">
+          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 mb-10 h-14 bg-muted/50 p-1.5 rounded-2xl border border-border/40 shadow-lg">
             <TabsTrigger
               value="swag"
-              className="text-sm font-semibold rounded-xl data-[state=active]:bg-gradient-to-br data-[state=active]:from-[#4E62FF]/20 data-[state=active]:to-[#4E62FF]/10 data-[state=active]:border data-[state=active]:border-[#4E62FF]/40 data-[state=active]:shadow-lg data-[state=active]:shadow-[#4E62FF]/20 transition-all duration-300"
+              className="text-sm font-semibold rounded-xl data-[state=active]:bg-[#4E62FF]/20 data-[state=active]:border-2 data-[state=active]:border-[#4E62FF]/50 data-[state=active]:shadow-lg transition-all duration-300"
             >
               <Package className="h-4 w-4 mr-2" />
               Service Tracker
             </TabsTrigger>
             <TabsTrigger
               value="volunteer"
-              className="text-sm font-semibold rounded-xl data-[state=active]:bg-gradient-to-br data-[state=active]:from-[#00D4D4]/20 data-[state=active]:to-[#00D4D4]/10 data-[state=active]:border data-[state=active]:border-[#00D4D4]/40 data-[state=active]:shadow-lg data-[state=active]:shadow-[#00D4D4]/20 transition-all duration-300"
+              className="text-sm font-semibold rounded-xl data-[state=active]:bg-[#00D4D4]/20 data-[state=active]:border-2 data-[state=active]:border-[#00D4D4]/50 data-[state=active]:shadow-lg transition-all duration-300"
             >
               <Users className="h-4 w-4 mr-2" />
               Volunteer Tracker
+            </TabsTrigger>
+            <TabsTrigger
+              value="tshirt"
+              className="text-sm font-semibold rounded-xl data-[state=active]:bg-[#4E62FF]/20 data-[state=active]:border-2 data-[state=active]:border-[#4E62FF]/50 data-[state=active]:shadow-lg transition-all duration-300"
+            >
+              <Shirt className="h-4 w-4 mr-2" />
+              Tshirt Printing
             </TabsTrigger>
           </TabsList>
 
@@ -86,6 +95,10 @@ export default function Home() {
 
           <TabsContent value="volunteer" className="mt-0">
             <VolunteerTracker showSummary={true} onTotalsChange={setVolunteerTotal} />
+          </TabsContent>
+
+          <TabsContent value="tshirt" className="mt-0">
+            <TshirtPrintingTracker showSummary={true} onTotalsChange={setTshirtTotal} />
           </TabsContent>
         </Tabs>
       </div>
