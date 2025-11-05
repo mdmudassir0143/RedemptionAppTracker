@@ -4,7 +4,7 @@ import { SwagTracker } from "@/components/swag-tracker"
 import { VolunteerTracker } from "@/components/volunteer-tracker"
 import { TshirtPrintingTracker } from "@/components/tshirt-printing-tracker"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { TrendingUp, Package, Users, Shirt } from "lucide-react"
 import { useState } from "react"
 
@@ -12,6 +12,7 @@ export default function Home() {
   const [swagTotal, setSwagTotal] = useState(0)
   const [volunteerTotal, setVolunteerTotal] = useState(0)
   const [tshirtTotal, setTshirtTotal] = useState(0)
+  const [activeTab, setActiveTab] = useState("swag")
 
   const grandTotal = swagTotal + volunteerTotal + tshirtTotal
 
@@ -64,7 +65,7 @@ export default function Home() {
           </div>
         </div>
 
-        <Tabs defaultValue="swag" className="w-full">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 mb-10 h-14 bg-muted/50 p-1.5 rounded-2xl border border-border/40 shadow-lg">
             <TabsTrigger
               value="swag"
@@ -89,17 +90,17 @@ export default function Home() {
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="swag" className="mt-0">
+          <div className={activeTab === "swag" ? "block" : "hidden"}>
             <SwagTracker showSummary={true} onTotalsChange={setSwagTotal} />
-          </TabsContent>
+          </div>
 
-          <TabsContent value="volunteer" className="mt-0">
+          <div className={activeTab === "volunteer" ? "block" : "hidden"}>
             <VolunteerTracker showSummary={true} onTotalsChange={setVolunteerTotal} />
-          </TabsContent>
+          </div>
 
-          <TabsContent value="tshirt" className="mt-0">
+          <div className={activeTab === "tshirt" ? "block" : "hidden"}>
             <TshirtPrintingTracker showSummary={true} onTotalsChange={setTshirtTotal} />
-          </TabsContent>
+          </div>
         </Tabs>
       </div>
     </main>
