@@ -86,7 +86,7 @@ export default function Home() {
               className="text-sm font-semibold rounded-xl data-[state=active]:bg-[#00D4D4]/20 data-[state=active]:border-2 data-[state=active]:border-[#00D4D4]/50 data-[state=active]:shadow-lg transition-all duration-300 w-full justify-center py-3 sm:py-0"
             >
               <Users className="h-4 w-4 mr-2" />
-              Volunteer Tracker
+              PostOffice Tracker
             </TabsTrigger>
             <TabsTrigger
               value="tshirt"
