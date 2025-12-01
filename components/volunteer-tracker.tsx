@@ -8,8 +8,8 @@ import { Line, LineChart, XAxis, YAxis, CartesianGrid, ResponsiveContainer } fro
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 const volunteerAccounts = [
-  { name: "AlgoPostOffice Wallet 1", address: "D52U3HFDWJIX54T26AYUDZU3DROVSPPESYI3CMXCTHTQU5DXIFH2HAFOSY" },
-  { name: "AlgoPostOffice Wallet 2", address: "YBQ4CMXQVDFLMFZFB5JNPPXU33MNIJCJPT2TGYS6GJR2ATMJRPWHQ3LTQQ" },
+  { name: "Wallet 1", address: "D52U3HFDWJIX54T26AYUDZU3DROVSPPESYI3CMXCTHTQU5DXIFH2HAFOSY" },
+  { name: "Wallet 2", address: "YBQ4CMXQVDFLMFZFB5JNPPXU33MNIJCJPT2TGYS6GJR2ATMJRPWHQ3LTQQ" },
 ]
 
 interface PaymentTransaction {
@@ -143,7 +143,7 @@ export function VolunteerTracker({ showSummary = false, onTotalsChange }: Volunt
                 <div>
                   <p className="text-xs font-bold text-foreground uppercase tracking-widest mb-2 flex items-center gap-2">
                     <span className="inline-block w-2 h-2 bg-[#00D4D4] rounded-full animate-pulse" />
-                    Volunteer Payments Total
+                    AlgoPostOffice Total Payments
                   </p>
                   <p className="text-sm text-muted-foreground font-medium">Combined across all volunteers</p>
                 </div>
