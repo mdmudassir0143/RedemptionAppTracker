@@ -3,9 +3,10 @@
 import { SwagTracker } from "@/components/swag-tracker"
 import { VolunteerTracker } from "@/components/volunteer-tracker"
 import { TshirtPrintingTracker } from "@/components/tshirt-printing-tracker"
+import { VolunteerBalanceTracker } from "@/components/volunteer-balance-tracker"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { TrendingUp, Package, Users, Shirt } from "lucide-react"
+import { TrendingUp, Package, Users, Shirt, Wallet } from "lucide-react"
 import { useState } from "react"
 
 export default function Home() {
@@ -39,7 +40,7 @@ export default function Home() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-12">
         <div className="max-w-3xl mx-auto mb-12">
-          <div className="relative overflow-hidden rounded-2xl border border-[#4E62FF]/20 bg-background from-[#4E62FF]/10 via-background to-[#00D4D4]/10 p-8 shadow-2xl shadow-[#4E62FF]/10 backdrop-blur-sm">
+          <div className="relative overflow-hidden rounded-2xl border border-[#4E62FF]/20 bg-background from-[#4E62FF]/10 via-background to-[#00D4D4]/10 p-6 sm:p-8 shadow-2xl shadow-[#4E62FF]/10 backdrop-blur-sm">
             <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl -z-10" />
             <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl -z-10" />
 
@@ -73,7 +74,7 @@ export default function Home() {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="flex flex-col sm:grid sm:grid-cols-3 w-full max-w-2xl mx-auto gap-2 sm:gap-0 mb-10 h-auto sm:h-14 bg-muted/50 p-1.5 rounded-2xl border border-border/40 shadow-lg">
+          <TabsList className="flex flex-col sm:grid sm:grid-cols-4 w-full max-w-3xl mx-auto gap-2 sm:gap-0 mb-10 h-auto sm:h-14 bg-muted/50 p-1.5 rounded-2xl border border-border/40 shadow-lg">
             <TabsTrigger
               value="swag"
               className="text-sm font-semibold rounded-xl data-[state=active]:bg-[#4E62FF]/20 data-[state=active]:border-2 data-[state=active]:border-[#4E62FF]/50 data-[state=active]:shadow-lg transition-all duration-300 w-full justify-center py-3 sm:py-0"
@@ -93,7 +94,14 @@ export default function Home() {
               className="text-sm font-semibold rounded-xl data-[state=active]:bg-[#4E62FF]/20 data-[state=active]:border-2 data-[state=active]:border-[#4E62FF]/50 data-[state=active]:shadow-lg transition-all duration-300 w-full justify-center py-3 sm:py-0"
             >
               <Shirt className="h-4 w-4 mr-2" />
-              NFT Printing Tracker
+              Tshirt Printing
+            </TabsTrigger>
+            <TabsTrigger
+              value="balance"
+              className="text-sm font-semibold rounded-xl data-[state=active]:bg-[#00D4D4]/20 data-[state=active]:border-2 data-[state=active]:border-[#00D4D4]/50 data-[state=active]:shadow-lg transition-all duration-300 w-full justify-center py-3 sm:py-0"
+            >
+              <Wallet className="h-4 w-4 mr-2" />
+              Volunteer Balance
             </TabsTrigger>
           </TabsList>
 
@@ -107,6 +115,10 @@ export default function Home() {
 
           <div className={activeTab === "tshirt" ? "block" : "hidden"}>
             <TshirtPrintingTracker showSummary={true} onTotalsChange={setTshirtTotal} />
+          </div>
+
+          <div className={activeTab === "balance" ? "block" : "hidden"}>
+            <VolunteerBalanceTracker showSummary={true} />
           </div>
         </Tabs>
       </div>
