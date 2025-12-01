@@ -43,7 +43,7 @@ export function TshirtPrintingTracker({ showSummary = false, onTotalsChange }: T
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`https://testnet-idx.4160.nodely.dev/v2/accounts/${ADMIN_WALLET}/transactions`)
+        const response = await fetch(`https://mainnet-idx.4160.nodely.dev/v2/accounts/${ADMIN_WALLET}/transactions`)
 
         if (!response.ok) {
           throw new Error("Failed to fetch data for Tshirt Printing wallet")
