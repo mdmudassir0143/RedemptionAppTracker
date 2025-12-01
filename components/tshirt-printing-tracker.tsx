@@ -7,7 +7,7 @@ import { ExternalLink, Loader2, TrendingUp, Shirt } from "lucide-react"
 import { Line, LineChart, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
-const ADMIN_WALLET = "MQ6SC3572BRWP7U3PMBYQPR5TTL6HMY2GWNTMXS53VZDB6COVNO5TWQNCQ"
+const ADMIN_WALLET = "VJGD7HVSISYI6WBFL5R2WBSH5E65UQ2KHA6QKTOPCXXRCXJ5WAKJDVKPSE"
 
 interface PaymentTransaction {
   txid: string
