@@ -8,10 +8,8 @@ import { Line, LineChart, XAxis, YAxis, CartesianGrid, ResponsiveContainer } fro
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 const volunteerAccounts = [
-  { name: "Volunteer 1", address: "MQ6SC3572BRWP7U3PMBYQPR5TTL6HMY2GWNTMXS53VZDB6COVNO5TWQNCQ" },
-  { name: "Volunteer 2", address: "P7ATIVBD66OOO3V2IJZ26TEUR34RG4OIEDKAMXKJ672SHO6HLKQ3K2LPXU" },
-  { name: "Volunteer 3", address: "D5OAEURK54HG7O45VJ6TE2LYVRJSNQOQ5GH4I3KH4YOBTNCNDVY53TKBLQ" },
-  { name: "Volunteer 4", address: "AX3TMYKCUVZRWYJNFHHICYBU6CCHO2QLX3XLQXNXVT6PT57BLCUVCPPWVU" },
+  { name: "AlgoPostOffice Wallet 1", address: "D52U3HFDWJIX54T26AYUDZU3DROVSPPESYI3CMXCTHTQU5DXIFH2HAFOSY" },
+  { name: "AlgoPostOffice Wallet 2", address: "YBQ4CMXQVDFLMFZFB5JNPPXU33MNIJCJPT2TGYS6GJR2ATMJRPWHQ3LTQQ" },
 ]
 
 interface PaymentTransaction {
@@ -59,7 +57,7 @@ export function VolunteerTracker({ showSummary = false, onTotalsChange }: Volunt
     volunteerAccounts.forEach(async (volunteer) => {
       try {
         const response = await fetch(
-          `https://testnet-idx.4160.nodely.dev/v2/accounts/${volunteer.address}/transactions`,
+          `https://mainnet-idx.4160.nodely.dev/v2/accounts/${volunteer.address}/transactions`,
         )
 
         if (!response.ok) {
