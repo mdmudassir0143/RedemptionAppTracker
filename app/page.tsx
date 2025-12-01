@@ -58,9 +58,9 @@ export default function Home() {
                     <div className="flex flex-col sm:flex-row sm:flex-wrap sm:gap-1">
                       <span className="whitespace-nowrap">Service Requests ({swagTotal})</span>
                       <span className="hidden sm:inline">+</span>
-                      <span className="whitespace-nowrap">Volunteer Payments ({volunteerTotal})</span>
+                      <span className="whitespace-nowrap">Post Office Payments ({volunteerTotal})</span>
                       <span className="hidden sm:inline">+</span>
-                      <span className="whitespace-nowrap">NFT Printing ({tshirtTotal})</span>
+                      <span className="whitespace-nowrap">T-Shirt Printing ({tshirtTotal})</span>
                     </div>
                   </div>
                 </div>
