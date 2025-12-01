@@ -8,27 +8,51 @@ import { ExternalLink, Loader2, Package } from "lucide-react"
 const swagItems = [
   {
     id: 1,
-    accountAddress: "4FQ5RO4XLULYFQV6JN2ASJHDRKI2PEZ4ZURRYJDD4U3GFQ3XARDEF7VNOM",
-    title: "Summit T-Shirt",
-    description: "Comfortable cotton t-shirt with summit design",
+    accountAddress: "42M7ZWLS56IZUVRZCM4Q7QKBMKNYVFZOAJ6YKHS2TPOJQGQ2I4VYXSRZQU",
+    title: "Summit Socks",
+    description: "Comfortable socks with summit design",
   },
   {
     id: 2,
-    accountAddress: "247XMLZMKFC2UVKBARUXDO6CKICMCSYHB5OIJKDMQNJCTZSPQFALOYAJGE",
-    title: "Summit Diary",
-    description: "Premium diary with Algorand India Summit branding",
+    accountAddress: "J4L6JX2HXENUNCSMHPXWV4J5QPSENJGQP6MDV37GSDI7QM4YMLNDHEHKOA",
+    title: "Summit Diary & Pen",
+    description: "Premium diary & Pen with Algorand India Summit branding",
   },
   {
     id: 3,
-    accountAddress: "DUSHJ5ZR4B6KOF6AZ2JL6EAJNUSGUHHNNTBYQ6E2JCZLRM47BWF7ZZA4YY",
-    title: "Summit Pen",
-    description: "Elegant pen with Algorand branding",
+    accountAddress: "KAMFT3G45OARLQS6LMWP3J2FKMG3IC6HQ4UMSGFZIBUQTOQG7GNRRIIZMM",
+    title: "Summit MousePad",
+    description: "Elegant MousePad with Algorand branding",
   },
   {
     id: 4,
-    accountAddress: "LCIHZX27HEW4TDYNMSTKVZLRW4VYS2I72XHPJN4RLQHQO7EE5OBQX24NK4",
-    title: "Hoodie",
-    description: "Comfortable hoodie with summit logo",
+    accountAddress: "P4NWMYRUSHLDAHCHCK5GNZRGZ7I5TWAWWFQTGTYGBZ3ZQJGJAVTTG5P7RI",
+    title: "Summit Cap",
+    description: "Comfortable Cap with summit logo",
+  },
+  {
+    id: 5,
+    accountAddress: "2YBLB5FKMVKLYPKWKQZCW7HWFBXMV63S6PKVW4ZFMOVI64H5HIHNCPE4VU",
+    title: "Summit Bottle",
+    description: "Bottle with summit logo",
+  },
+    {
+    id: 6,
+    accountAddress: "AC4E5SXVSZHACMWRS2JCAA7QNKF3OFNTAFO6I4UMHJFJG5IQEULM7YZCTE",
+    title: "Summit Hoodie",
+    description: "Comfortable Hoodie with summit logo",
+  },
+      {
+    id: 7,
+    accountAddress: "ZLYIDLBSUYJZV4N77THCRKEOMO3G6VBPZNVGDOFPHJ5Z56YDYHHCDR7YPE",
+    title: "Henna Tatoo",
+    description: "Hennna Tatoo Deesign",
+  },
+      {
+    id: 8,
+    accountAddress: "XYEEBHGNIWQL5MTWHNRCXQC6RIDC6K3ZPLIPNJZWRFB5WESOJ735QZHFVM",
+    title: "Sketch Shop",
+    description: "Live Sketch at the summit",
   },
 ]
 
@@ -130,7 +154,7 @@ export function SwagTracker({ showSummary = false, onTotalsChange }: SwagTracker
     swagItems.forEach(async (item) => {
       try {
         const response = await fetch(
-          `https://testnet-idx.4160.nodely.dev/v2/accounts/${item.accountAddress}/transactions`,
+          `https://mainnet-idx.4160.nodely.dev/v2/accounts/${item.accountAddress}/transactions`,
         )
 
         if (!response.ok) {
@@ -277,7 +301,7 @@ export function SwagTracker({ showSummary = false, onTotalsChange }: SwagTracker
                       <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                     </div>
                     <a
-                      href={`https://lora.algokit.io/testnet/account/${item.accountAddress}`}
+                      href={`https://lora.algokit.io/mainnet/account/${item.accountAddress}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group"
@@ -346,7 +370,7 @@ export function SwagTracker({ showSummary = false, onTotalsChange }: SwagTracker
                           return (
                             <a
                               key={`${tx.id || tx.parentId}-${index}`}
-                              href={`https://lora.algokit.io/testnet/transaction/${linkId}`}
+                              href={`https://lora.algokit.io/mainnet/transaction/${linkId}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className={`flex items-center justify-between p-3.5 bg-muted/50 hover:bg-[#4E62FF]/15 rounded-xl transition-all duration-200 border border-border/50 hover:border-[#4E62FF]/50 hover:shadow-lg hover:shadow-[#4E62FF]/10 group ${
