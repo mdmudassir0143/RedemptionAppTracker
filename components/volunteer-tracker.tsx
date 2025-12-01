@@ -143,7 +143,7 @@ export function VolunteerTracker({ showSummary = false, onTotalsChange }: Volunt
                 <div>
                   <p className="text-xs font-bold text-foreground uppercase tracking-widest mb-2 flex items-center gap-2">
                     <span className="inline-block w-2 h-2 bg-[#00D4D4] rounded-full animate-pulse" />
-                    AlgoPostOffice Total Payments
+                    Algo PostOffice Total Payments
                   </p>
                   <p className="text-sm text-muted-foreground font-medium">Combined across all volunteers</p>
                 </div>
