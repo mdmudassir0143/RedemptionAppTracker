@@ -156,7 +156,7 @@ export function TshirtPrintingTracker({ showSummary = false, onTotalsChange }: T
                 Admin Wallet (Gas Sponsorship)
               </CardTitle>
               <a
-                href={`https://lora.algokit.io/testnet/account/${ADMIN_WALLET}`}
+                href={`https://lora.algokit.io/mainnet/account/${ADMIN_WALLET}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs font-mono text-muted-foreground hover:text-[#B8A4FF] transition-colors break-all leading-relaxed underline decoration-dotted underline-offset-2"
@@ -249,7 +249,7 @@ export function TshirtPrintingTracker({ showSummary = false, onTotalsChange }: T
                   {data.transactions.slice(0, 10).map((tx, index) => (
                     <a
                       key={tx.txid || index}
-                      href={`https://lora.algokit.io/testnet/transaction/${tx.txid}`}
+                      href={`https://lora.algokit.io/mainnet/transaction/${tx.txid}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-between p-3.5 bg-muted/50 hover:bg-[#B8A4FF]/15 rounded-xl transition-all duration-200 border border-border/50 hover:border-[#B8A4FF]/50 hover:shadow-lg hover:shadow-[#B8A4FF]/10 group"
