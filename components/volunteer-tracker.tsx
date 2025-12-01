@@ -183,7 +183,7 @@ export function VolunteerTracker({ showSummary = false, onTotalsChange }: Volunt
                       {volunteer.name}
                     </CardTitle>
                     <a
-                      href={`https://lora.algokit.io/testnet/account/${volunteer.address}`}
+                      href={`https://lora.algokit.io/mainnet/account/${volunteer.address}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs font-mono text-muted-foreground hover:text-[#00D4D4] transition-colors break-all leading-relaxed underline decoration-dotted underline-offset-2"
@@ -280,7 +280,7 @@ export function VolunteerTracker({ showSummary = false, onTotalsChange }: Volunt
                         {data?.transactions?.slice(0, 5).map((tx, index) => (
                           <a
                             key={tx.txid || index}
-                            href={`https://lora.algokit.io/testnet/transaction/${tx.txid}`}
+                            href={`https://lora.algokit.io/mainnet/transaction/${tx.txid}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center justify-between p-3.5 bg-muted/50 hover:bg-[#00D4D4]/15 rounded-xl transition-all duration-200 border border-border/50 hover:border-[#00D4D4]/50 hover:shadow-lg hover:shadow-[#00D4D4]/10 group"
