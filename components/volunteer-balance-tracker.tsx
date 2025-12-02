@@ -98,7 +98,7 @@ export function VolunteerBalanceTracker({ showSummary = false }: VolunteerBalanc
                 ) : (
                   <>
                     <div className="text-5xl md:text-6xl font-black text-[#00D4D4] tracking-tighter">
-                      {totalBalance.toFixed(2)}
+                      {totalBalance.toFixed(4)}
                     </div>
                     <p className="text-sm text-muted-foreground mt-2 font-medium">ALGO</p>
                   </>
@@ -149,7 +149,7 @@ export function VolunteerBalanceTracker({ showSummary = false }: VolunteerBalanc
                     ) : (
                       <div className="space-y-2">
                         <p className="text-4xl md:text-5xl font-black text-[#00D4D4] tracking-tight">
-                          {data?.balance.toFixed(2)}
+                          {data?.balance.toFixed(4)}
                         </p>
                         <Badge
                           variant="secondary"
