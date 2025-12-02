@@ -20,7 +20,7 @@ const swagItems = [
   },
   {
     id: 3,
-    accountAddress: "KAMFT3G45OARLQS6LMWP3J2FKMG3IC6HQ4UMSGFZIBUQTOQG7GNRRIIZMM",
+    accountAddress: "52RPCW4JZFXNIUV6ZTSWJPEVFNEZ4NCXDLFNRK33B4PWR6ZKSFFEQDHGXM",
     title: "Summit MousePad",
     description: "Elegant MousePad with Algorand branding",
   },
