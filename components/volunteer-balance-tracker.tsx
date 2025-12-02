@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge"
 import { ExternalLink, Loader2, Wallet } from "lucide-react"
 
 const volunteerBalanceAccounts = [
+  { name: "Post Office Wallet1 Balance", address: "D52U3HFDWJIX54T26AYUDZU3DROVSPPESYI3CMXCTHTQU5DXIFH2HAFOSY" },
+  { name: "Post Office Wallet1 Balance", address: "YBQ4CMXQVDFLMFZFB5JNPPXU33MNIJCJPT2TGYS6GJR2ATMJRPWHQ3LTQQ" },
   { name: "Algo Dukan 1 Wallet Balance", address: "QFCTF632VWA5MGEF74Z6ELBUZDJFOHR276RPGQFE44RDNCEBVM465FZHFE" },
   { name: "Algo Dukan 2 Wallet Balance", address: "BFJOBKLJADVJ7WJB2B2DOM2M3HCR6CNO3V7I2FCKG7NTTVFCETGKSBDPZA" },
   { name: "Henna Tatoo Balance", address: "CA4MUY7F6JOCRUZWYGDBVRB5IMJU6BDUESLHJBHDOHCCSQBKPKVG76LV2U" },
